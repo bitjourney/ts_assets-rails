@@ -57,7 +57,6 @@ RSpec.describe TsAssets::Models::AssetMetaInfo do
     }
   end
 
-  # TODO: these test requires the exect file in the app/assets/images folder
   describe '#width' do
     it {
       expect(asset_meta_info.width).to eq 128
@@ -66,7 +65,6 @@ RSpec.describe TsAssets::Models::AssetMetaInfo do
     }
   end
 
-  # TODO: these test requires the exect file in the app/assets/images folder
   describe '#height' do
     it {
       expect(asset_meta_info.height).to eq 128
@@ -75,7 +73,6 @@ RSpec.describe TsAssets::Models::AssetMetaInfo do
     }
   end
 
-  # TODO: these test requires the exect file in the app/assets/images folder
   describe '#digest_path' do
     it {
       expect(asset_meta_info.digest_path).to match %r{^svg/ruby-icon-(.+).svg$}
