@@ -4,3 +4,6 @@ source "https://rubygems.org"
 gemspec
 
 gem 'fastimage'
+
+gem 'pry'
+gem 'sprockets'

@@ -5,8 +5,18 @@ module TsAssets
     class AssetMetaInfo
       DESCRIPTOR_REGEX = /(.+?)@(\dx)./
 
+      # full_path is a path from the app root.
+      # ex) "app/assets/images/path/to/the/image.png"
       # [String]
       attr_reader :full_path
+
+      # include_path is the app asset path root.
+      # ex) "app/assets/images"
+      # [String]
+      attr_reader :include_path
+
+      # [Sprockets::Environment]
+      attr_reader :environment
 
       # [String]
       attr_reader :asset_path_without_descriptor
@@ -21,8 +31,14 @@ module TsAssets
       attr_reader :height
 
       # @param [String] full_path
-      def initialize(full_path:)
+      def initialize(full_path:, 
+                     include_path:,
+                     environment:
+                     )
+
         @full_path = full_path
+        @include_path = include_path
+        @environment = environment
 
         @width, @height = FastImage.size(full_path)
 
@@ -46,7 +62,7 @@ module TsAssets
       # @return [String]
       def asset_path
         # ex) "emptystate/en/blog_feed@2x.png"
-        full_path.gsub(%r{^app/assets/images/}, '')
+        full_path.gsub(%r{^#{include_path}/}, '')
       end
 
       # @return [String] asset path_without_ext
@@ -57,7 +73,8 @@ module TsAssets
       # @return [String]
       def digest_path
         # ex) "emptystate/ja/blog_feed@2x-96cf00af98b2380dc6ad9cb4415e8e856781ec0747d22245804c602c50005956.png"
-        Rails.application.assets.find_asset(asset_path).digest_path
+        # Rails.application.assets.find_asset(asset_path).digest_path
+        environment.find_asset(asset_path).digest_path
       end
 
       # ex) "toast/success.svg" -> PATH_TOAST_SUCCESS

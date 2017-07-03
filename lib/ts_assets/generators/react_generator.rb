@@ -63,11 +63,11 @@ module TsAssets
         TS
       end
 
-      # @param [String] path
+      # @param [String] asset_path
       # @return [String] component name
-      def build_component_name(path)
+      def build_component_name(asset_path)
         invalid_chars = %r{[@_/-]}
-        normalised_name = path.split(invalid_chars).map(&:capitalize).join
+        normalised_name = asset_path.split(invalid_chars).map(&:capitalize).join
         "Image#{normalised_name}"
       end
 
