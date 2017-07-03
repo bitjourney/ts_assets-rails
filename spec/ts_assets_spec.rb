@@ -1,7 +1,10 @@
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe TsAssets do
-  it "has a version number" do
-    expect(TsAssets::VERSION).not_to be nil
+  describe '.generate' do
+    it 'should generate a file content as a String' do
+      source = TsAssets.generate
+      expect(source.length).to be > 0
+    end
   end
 end
