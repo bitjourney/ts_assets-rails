@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Kenju Wagatsuma"]
   spec.email         = ["ken901waga@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Rails assets helper for TypeScript}
+  spec.description   = %q{generate React.js components for TypeScript based on rails assets.}
+  spec.homepage      = "https://github.com/bitjourney/ts_assets-rails"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
