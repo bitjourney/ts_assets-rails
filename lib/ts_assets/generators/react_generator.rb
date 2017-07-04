@@ -1,3 +1,5 @@
+require 'active_support/core_ext/string/inflections'
+
 module TsAssets
   module Generators
     class ReactGenerator < TsAssets::ApplicationGenerator
@@ -70,9 +72,7 @@ module TsAssets
       # @param [String] asset_path
       # @return [String]
       def build_component_name(asset_path)
-        invalid_chars = %r{[@_/-]}
-        normalised_name = asset_path.split(invalid_chars).map(&:capitalize).join
-        "Image#{normalised_name}"
+        "Image#{asset_path.gsub(/[^a-zA-Z0-9_]/, '_').camelize}"
       end
 
       # @param [Array<AssetMetaInfo>] asset_meta_infos

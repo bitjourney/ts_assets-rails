@@ -78,8 +78,7 @@ module TsAssets
 
       # @return [String]
       def normalised_path
-        invalid_chars = %r{[/.@-]}
-        "PATH_#{asset_path_without_ext.gsub(invalid_chars, '_').upcase}"
+        "PATH_#{asset_path_without_ext.gsub(/[^a-zA-Z0-9_]/, '_').upcase}"
       end
     end
   end
