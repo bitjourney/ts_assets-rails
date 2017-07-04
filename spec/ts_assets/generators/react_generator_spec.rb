@@ -22,6 +22,7 @@ RSpec.describe TsAssets::Generators::ReactGenerator do
       export function ImageSvgRubyIcon(props: React.HTMLProps<HTMLImageElement>) {
           return <img alt="ruby-icon"
                       width={128}
+                      height={128}
                       src={PATH_SVG_RUBY_ICON}
                       srcSet={`${PATH_SVG_RUBY_ICON} 1x`}
                       {...props}
@@ -32,6 +33,7 @@ RSpec.describe TsAssets::Generators::ReactGenerator do
       export function ImageWebhookSlackIcon(props: React.HTMLProps<HTMLImageElement>) {
           return <img alt="slack_icon"
                       width={20}
+                      height={20}
                       src={PATH_WEBHOOK_SLACK_ICON_1X}
                       srcSet={`${PATH_WEBHOOK_SLACK_ICON_1X} 1x,${PATH_WEBHOOK_SLACK_ICON_2X} 2x`}
                       {...props}
@@ -73,6 +75,7 @@ RSpec.describe TsAssets::Generators::ReactGenerator do
         export function ImageSvgRubyIcon(props: React.HTMLProps<HTMLImageElement>) {
             return <img alt="ruby-icon"
                         width={128}
+                        height={128}
                         src={PATH_SVG_RUBY_ICON}
                         srcSet={`${PATH_SVG_RUBY_ICON} 1x`}
                         {...props}

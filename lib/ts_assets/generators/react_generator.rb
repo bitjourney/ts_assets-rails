@@ -49,6 +49,7 @@ module TsAssets
 
         alt = File.basename(path)
         width = asset_meta_infos.first.width
+        height = asset_meta_infos.first.height
         src = asset_meta_infos.first.normalised_path
         src_set = build_src_set(asset_meta_infos)
 
@@ -57,6 +58,7 @@ module TsAssets
           export function #{component_name}(props: React.HTMLProps<HTMLImageElement>) {
               return <img alt="#{alt}"
                           width={#{width}}
+                          height={#{height}}
                           src={#{src}}
                           srcSet={#{src_set}}
                           {...props}

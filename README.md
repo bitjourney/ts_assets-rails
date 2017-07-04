@@ -48,6 +48,7 @@ const PATH_SVG_RUBY_ICON = "/assets/svg/ruby-icon-486fbe77b2fa535451a48ccd48587f
 export function ImageSvgRubyIcon(props: React.HTMLProps<HTMLImageElement>) {
     return <img alt="ruby-icon"
                 width={128}
+                height={128}
                 src={PATH_SVG_RUBY_ICON}
                 srcSet={`${PATH_SVG_RUBY_ICON} 1x`}
                 {...props}
@@ -85,9 +86,9 @@ Currently supported options are:
 
 ### React Components
 
-#### `width`
+#### `width`, `height`
 
-The `width` attribute is automatically set via https://github.com/sdsykes/fastimage gem.
+The `width` and `height` attribute is automatically set via https://github.com/sdsykes/fastimage gem.
 
 #### `srcSet`
 
