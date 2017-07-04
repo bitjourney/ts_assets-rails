@@ -19,7 +19,7 @@ RSpec.describe TsAssets::Generators::ReactGenerator do
 
       expected_body = <<~TS
       /** svg/ruby-icon */
-      export function ImageSvgRubyIcon(props: any) {
+      export function ImageSvgRubyIcon(props: React.HTMLProps<HTMLImageElement>) {
           return <img alt="ruby-icon"
                       width={128}
                       src={PATH_SVG_RUBY_ICON}
@@ -29,7 +29,7 @@ RSpec.describe TsAssets::Generators::ReactGenerator do
       }
 
       /** webhook/slack_icon */
-      export function ImageWebhookSlackIcon(props: any) {
+      export function ImageWebhookSlackIcon(props: React.HTMLProps<HTMLImageElement>) {
           return <img alt="slack_icon"
                       width={20}
                       src={PATH_WEBHOOK_SLACK_ICON_1X}
@@ -70,7 +70,7 @@ RSpec.describe TsAssets::Generators::ReactGenerator do
       ]
       expected = <<~TS
         /** svg/ruby-icon */
-        export function ImageSvgRubyIcon(props: any) {
+        export function ImageSvgRubyIcon(props: React.HTMLProps<HTMLImageElement>) {
             return <img alt="ruby-icon"
                         width={128}
                         src={PATH_SVG_RUBY_ICON}

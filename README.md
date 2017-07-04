@@ -45,7 +45,7 @@ For example, if  you have `app/assets/images/svg/ruby-icon.svg` in your asset pa
 const PATH_SVG_RUBY_ICON = "/assets/svg/ruby-icon-486fbe77b2fa535451a48ccd48587f8a1359fb373b7843e14fb5a84cb2697160.svg";
 
 /** svg/ruby-icon */
-export function ImageSvgRubyIcon(props: any) {
+export function ImageSvgRubyIcon(props: React.HTMLProps<HTMLImageElement>) {
     return <img alt="ruby-icon"
                 width={128}
                 src={PATH_SVG_RUBY_ICON}
@@ -112,7 +112,7 @@ const PATH_WEBHOOK_SLACK_ICON_1X = "/assets/webhook/slack_icon@1x-dd316f78fb005e
 const PATH_WEBHOOK_SLACK_ICON_2X = "/assets/webhook/slack_icon@2x-4f5daeae796f89bb5590bae233226cacd092c1c4e911a12061bfe12c597cc885.png";
 
 /** webhook/slack_icon */
-export function ImageWebhookSlackIcon(props: any) {
+export function ImageWebhookSlackIcon(props: React.HTMLProps<HTMLImageElement>) {
     return <img alt="slack_icon"
                 width={20}
                 src={PATH_WEBHOOK_SLACK_ICON_1X}

@@ -54,7 +54,7 @@ module TsAssets
 
         <<~TS
           /** #{path} */
-          export function #{component_name}(props: any) {
+          export function #{component_name}(props: React.HTMLProps<HTMLImageElement>) {
               return <img alt="#{alt}"
                           width={#{width}}
                           src={#{src}}
