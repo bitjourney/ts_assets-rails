@@ -1,12 +1,16 @@
 module TsAssets
   module Generators
     class ReactGenerator < TsAssets::ApplicationGenerator
+
+      # @return [Hash]
       attr_reader :mapping
 
+      # @param [Hash] mapping
       def initialize(mapping)
         @mapping = merge_mapping_with_same_descriptors(mapping)
       end
 
+      # @return [TsAssets::Models::Content]
       def generate
         components = mapping.map { |path, asset_meta_infos| reactify(path, asset_meta_infos) }
         TsAssets::Models::Content.new(header: header, body: components.join("\n"))
@@ -14,12 +18,9 @@ module TsAssets
 
       private
 
-      # Join AssetMetaInfo with same descriptors(e.g. x@1x.png & x@2x.png => )
-      # @param [Hash<String, AssetMetaInfo>] mapping
-      # @return [Hash<String, [AssetMetaInfo]>]
+      # @param [Hash<String, TsAssets::Models::AssetMetaInfo>] mapping
+      # @return [Hash<String, [TsAssets::Models::AssetMetaInfo]>]
       def merge_mapping_with_same_descriptors(mapping)
-        # key: path_without_descriptor
-        # val: [AssetMetaInfo]
         new_mapping = {}
 
         mapping.map do |full_path, asset_meta_info|
@@ -35,13 +36,14 @@ module TsAssets
         new_mapping
       end
 
+      # @return [String]
       def header
         "import * as React from 'react';"
       end
 
       # @param [String] path
-      # @param [Array<AssetMetaInfo>] meta infos
-      # @return [String] a code block in .tsx
+      # @param [Array<AssetMetaInfo>] asset_meta_infos
+      # @return [String]
       def reactify(path, asset_meta_infos)
         component_name = build_component_name(path)
 
@@ -64,14 +66,15 @@ module TsAssets
       end
 
       # @param [String] asset_path
-      # @return [String] component name
+      # @return [String]
       def build_component_name(asset_path)
         invalid_chars = %r{[@_/-]}
         normalised_name = asset_path.split(invalid_chars).map(&:capitalize).join
         "Image#{normalised_name}"
       end
 
-      # @param [Array<AssetMetaInfo>] asset meta infos
+      # @param [Array<AssetMetaInfo>] asset_meta_infos
+      # @return [String]
       def build_src_set(asset_meta_infos)
         src_set = asset_meta_infos.map do |meta_info|
           "${#{meta_info.normalised_path}} #{meta_info.descriptor}"

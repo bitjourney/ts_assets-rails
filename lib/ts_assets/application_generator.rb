@@ -4,20 +4,22 @@ module TsAssets
   class ApplicationGenerator
     DEFAULT_FILE_HEADER = "/* tslint:disable */"
 
-    # [Hash]
+    # @return [Hash] mapping
     attr_reader :mapping
 
+    # @param [String] include
     def initialize(include:)
       @mapping = build_mapping(include)
 
       environment.append_path(include)
     end
 
+    # @return [Sprockets::Environment]
     def environment
       @environment ||= Sprockets::Environment.new
     end
 
-    # @return [String] assets.ts content as a text
+    # @return [String]
     def generate
       [ # header
         DEFAULT_FILE_HEADER,
@@ -30,15 +32,17 @@ module TsAssets
       ].join("\n\n")
     end
 
+    # @return [TsAssets::Models::Content]
     def const_content
       @const_content ||= TsAssets::Generators::ConstGenerator.new(mapping).generate
     end
 
+    # @return [TsAssets::Models::Content]
     def react_content
       @react_content ||= TsAssets::Generators::ReactGenerator.new(mapping).generate
     end
 
-    # @param [String]
+    # @param [String] include_path
     # @return [Hash]
     def build_mapping(include_path)
       mapping = {}
