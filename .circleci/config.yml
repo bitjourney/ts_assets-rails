@@ -2,14 +2,37 @@ version: 2
 jobs:
   build:
     docker:      
-      - image: bitjourney/kibela-ci:latest
+      - image: ruby:latest
     environment:
       BUNDLE_DIR: vendor/bundle
     
-    working_directory: /home/ubuntu/kibela
+    working_directory: src
 
     steps:
       - checkout
+
+      - restore_cache:
+          name: "[Node.js] Restore Cache"
+          keys:
+            - nodejs-6.10.2
+            - nodejs-
+
+      - run:
+          name: "[Node.js] Install"
+          command: |
+            if [[ ! -e /usr/local/bin/node || $(node --version) != "v${NODEJS_VERSION}" ]]; then
+              # https://nodejs.org/ja/download/package-manager/#debian-and-ubuntu-based-linux-distributions-debian-ubuntu-linux
+              curl -sL https://deb.nodesource.com/setup_6.x | bash -
+              apt-get update -qq
+              apt-get install -y nodejs
+              ln -s /usr/local/bin/node /usr/local/bin/nodejs
+            fi
+
+      - save_cache:
+          name: "[Node.js] Save Cache"
+          key: nodejs-6.10.2
+          paths:
+            - /usr/local/bin/node
 
       - run:
           name: Check Runtime Information
