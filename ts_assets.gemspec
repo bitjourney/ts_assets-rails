@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Rails assets helper for TypeScript}
   spec.description   = %q{generate React.js components for TypeScript based on rails assets.}
   spec.homepage      = "https://github.com/bitjourney/ts_assets-rails"
+  spec.license       = "Apach-2.0"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.

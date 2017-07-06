@@ -131,4 +131,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kenju/ts_assets.
+Bug reports and pull requests are welcome on GitHub at https://github.com/bitjourney/ts_assets-rails.
