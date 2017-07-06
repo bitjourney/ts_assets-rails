@@ -1,0 +1,53 @@
+{
+  "name": "ts_assets-rails",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Rails assets helper for TypeScript",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "pretest": "bundle exec rake generate",
+    "test": "jest",
+    "lint": "tslint '__tests__/**/*.{ts,tsx}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bitjourney/ts_assets-rails.git"
+  },
+  "author": "kenju",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/bitjourney/ts_assets-rails/issues"
+  },
+  "homepage": "https://github.com/bitjourney/ts_assets-rails#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/enzyme": "*",
+    "@types/jest": "*",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "enzyme": "*",
+    "jest": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-test-renderer": "*",
+    "ts-jest": "*",
+    "tslint": "*",
+    "typescript": "*"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/__tests__/ts_assets_spec.tsx$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ]
+  }
+}
