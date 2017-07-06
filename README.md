@@ -1,6 +1,6 @@
 # TsAssets
 
-[![Build Status](https://travis-ci.org/bitjourney/ts_assets-rails.svg?branch=master)](https://travis-ci.org/bitjourney/ts_assets-rails)
+[![CircleCI](https://circleci.com/gh/bitjourney/ts_assets-rails.svg?style=svg)](https://circleci.com/gh/bitjourney/ts_assets-rails)
 
 ## Installation
 

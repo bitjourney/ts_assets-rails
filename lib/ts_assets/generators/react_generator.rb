@@ -40,7 +40,7 @@ module TsAssets
 
       # @return [String]
       def header
-        "import * as React from 'react';"
+        "import * as React from \"react\";\n"
       end
 
       # @param [String] path
@@ -57,7 +57,7 @@ module TsAssets
 
         <<~TS
           /** #{path} */
-          export function #{component_name}(props: React.HTMLProps<HTMLImageElement>) {
+          export function #{component_name}(props?: React.HTMLProps<HTMLImageElement>) {
               return <img alt="#{alt}"
                           width={#{width}}
                           height={#{height}}

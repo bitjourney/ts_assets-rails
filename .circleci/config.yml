@@ -1,0 +1,51 @@
+version: 2
+jobs:
+  build:
+    docker:      
+      - image: bitjourney/kibela-ci:latest
+    environment:
+      BUNDLE_DIR: vendor/bundle
+    
+    working_directory: /home/ubuntu/kibela
+
+    steps:
+      - checkout
+
+      - run:
+          name: Check Runtime Information
+          command: |
+            cat << EOF
+            bundler        : `bundle -v`
+            Node.js        : `node -v`
+            EOF
+
+      - restore_cache:
+          name: "[Ruby] Restore Cache"
+          keys:
+            - gems-{{ checksum "Gemfile.lock" }}
+            - gems-
+
+      - run: bundle check --path=$BUNDLE_DIR || bundle install --path=$BUNDLE_DIR --jobs=4 --retry=3 --without=production
+
+      - save_cache:
+          name: "[Ruby] Save Cache"
+          key: gems-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle/
+
+      - restore_cache:
+          name: "[JavaScript] Restore Cache"
+          keys:
+            - js-packages-{{ checksum "package-lock.json" }}
+            - js-packages-
+
+      - run: npm install
+
+      - save_cache:
+          name: "[JavaScript] Save Cache"
+          key: js-packages-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules/
+
+      - run: npm test
+      - run: npm run lint

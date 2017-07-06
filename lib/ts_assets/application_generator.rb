@@ -2,8 +2,6 @@ require 'sprockets'
 
 module TsAssets
   class ApplicationGenerator
-    DEFAULT_FILE_HEADER = "/* tslint:disable */"
-
     # @return [Hash] mapping
     attr_reader :mapping
 
@@ -22,14 +20,13 @@ module TsAssets
     # @return [String]
     def generate
       [ # header
-        DEFAULT_FILE_HEADER,
         react_content.header,
 
         # body
         const_content.body,
         react_content.body,
 
-      ].join("\n\n")
+      ].join("\n")
     end
 
     # @return [TsAssets::Models::Content]
