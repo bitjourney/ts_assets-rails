@@ -8,7 +8,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "pretest": "rake generate",
+    "pretest": "bundle exec rake generate",
     "test": "jest",
     "lint": "tslint '__tests__/**/*.{ts,tsx}'"
   },
