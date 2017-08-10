@@ -44,9 +44,9 @@ module TsAssets
     def build_mapping(include_path)
       mapping = {}
 
-      Dir.glob("#{include_path}/**/*.*").each do |full_path|
+      Dir.glob("#{include_path}/**/*.{png,svg,jpg,jpeg,gif}").each do |full_path|
         mapping[full_path] = TsAssets::Models::AssetMetaInfo.new(
-          full_path: full_path, 
+          full_path: full_path,
           include_path: include_path,
           environment: environment,
         )
