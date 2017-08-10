@@ -10,7 +10,7 @@ namespace :test do
   end
 end
 
-task :test, ['test:ts_assets'] do
+task :test => ['test:ts_assets'] do
   sh 'npm', 'test'
 end
 
