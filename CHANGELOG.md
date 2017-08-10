@@ -1,5 +1,9 @@
 # The Revision History of ts_assets
 
+## v0.1.3 - 2017/08/10
+
+* Sort filenames for consistency
+
 ## v0.1.2 - 2017/08/10
 
 * Fix nil errors when there're garbage files like `*.svg~`
