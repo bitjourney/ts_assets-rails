@@ -73,7 +73,15 @@ module TsAssets
 
       # @return [String]
       def digest_path
-        environment.find_asset(asset_path).digest_path
+        asset.digest_path
+      end
+
+      def asset
+        asset = environment.find_asset(asset_path)
+        if !asset
+          raise "No asset in the environment: #{asset_path}"
+        end
+        asset
       end
 
       # @return [String]
