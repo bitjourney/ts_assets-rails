@@ -1,11 +1,11 @@
 version: 2
 jobs:
   build:
-    docker:      
+    docker:
       - image: ruby:latest
     environment:
       BUNDLE_DIR: vendor/bundle
-    
+
     working_directory: src
 
     steps:
@@ -70,5 +70,5 @@ jobs:
           paths:
             - node_modules/
 
-      - run: npm test
+      - run: rake test
       - run: npm run lint
