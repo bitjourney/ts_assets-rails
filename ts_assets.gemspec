@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Kenju Wagatsuma"]
   spec.email         = ["ken901waga@gmail.com"]
 
-  spec.summary       = %q{Rails assets helper for TypeScript}
-  spec.description   = %q{generate React.js components for TypeScript based on rails assets.}
+  spec.summary       = %q{Exports Rails assets to TypeScript as React components}
+  spec.description   = %q{The gem exports Rails assets to TypeScript as React components.}
   spec.homepage      = "https://github.com/bitjourney/ts_assets-rails"
   spec.license       = "Apache-2.0"
 
@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "railties", ">= 5.0"
+  spec.add_runtime_dependency "activesupport", ">= 5.0"
   spec.add_runtime_dependency 'fastimage', ">= 2.1"
   spec.add_runtime_dependency 'sprockets', ">= 3.7"
 end

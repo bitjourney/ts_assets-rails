@@ -1,5 +1,9 @@
 # The Revision History of ts_assets
 
+## v1.0.0 - 2017/08/17
+
+* No code change
+
 ## v0.1.3 - 2017/08/10
 
 * Sort filenames for consistency
