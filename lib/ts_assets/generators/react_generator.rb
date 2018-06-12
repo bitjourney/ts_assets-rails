@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support/core_ext/string/inflections'
 
 module TsAssets
@@ -7,9 +9,13 @@ module TsAssets
       # @return [Hash]
       attr_reader :mapping
 
+      # @return [Boolean]
+      attr_reader :es_module_interop
+
       # @param [Hash] mapping
-      def initialize(mapping)
+      def initialize(mapping, es_module_interop: false)
         @mapping = merge_mapping_with_same_descriptors(mapping)
+        @es_module_interop = es_module_interop
       end
 
       # @return [TsAssets::Models::Content]
@@ -40,7 +46,15 @@ module TsAssets
 
       # @return [String]
       def header
-        "import * as React from \"react\";\n"
+        if es_module_interop
+          <<~TYPESCRIPT
+            import React from "react";
+          TYPESCRIPT
+        else
+          <<~TYPESCRIPT
+            import * as React from "react";
+          TYPESCRIPT
+        end
       end
 
       # @param [String] path
@@ -57,7 +71,7 @@ module TsAssets
 
         <<~TS
           /** #{path} */
-          export function #{component_name}(props?: React.HTMLProps<HTMLImageElement>) {
+          export function #{component_name}(props?: React.DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>) {
               return <img alt="#{alt}"
                           width={#{width}}
                           height={#{height}}

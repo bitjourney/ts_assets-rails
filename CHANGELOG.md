@@ -1,5 +1,9 @@
 # The Revision History of ts_assets
 
+## v1.1.0 - 2018/06/12
+
+* add `es_module_interp` to use `import React from "react"` instead of `import * as React from "react"`
+
 ## v1.0.0 - 2017/08/17
 
 * No code change

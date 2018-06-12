@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TsAssets
   module Generators
     class ConstGenerator < TsAssets::ApplicationGenerator
