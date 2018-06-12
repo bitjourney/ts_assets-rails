@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sprockets'
 
 module TsAssets
@@ -5,9 +7,13 @@ module TsAssets
     # @return [Hash] mapping
     attr_reader :mapping
 
+    # @return [Boolean]
+    attr_reader :es_module_interop
+
     # @param [String] include
-    def initialize(include:)
+    def initialize(include:, es_module_interop: false)
       @mapping = build_mapping(include)
+      @es_module_interop = es_module_interop
 
       environment.append_path(include)
     end
@@ -36,7 +42,7 @@ module TsAssets
 
     # @return [TsAssets::Models::Content]
     def react_content
-      @react_content ||= TsAssets::Generators::ReactGenerator.new(mapping).generate
+      @react_content ||= TsAssets::Generators::ReactGenerator.new(mapping, es_module_interop: es_module_interop).generate
     end
 
     # @param [String] include_path

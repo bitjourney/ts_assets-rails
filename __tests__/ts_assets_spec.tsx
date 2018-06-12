@@ -1,8 +1,11 @@
-import { shallow } from "enzyme";
-import * as React from "react";
+import Enzyme from "enzyme";
+import EnzymeAdapter from "enzyme-adapter-react-16";
+import React from "react";
 import { renderToString } from "react-dom/server";
 
 import * as Assets from "./build/assets";
+
+Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 describe("TsAssets Components", () => {
   describe("with Server-Side Rendering", () => {
@@ -14,12 +17,12 @@ describe("TsAssets Components", () => {
 
   describe("with Client-Side Rendering", () => {
     test("renders something", () => {
-      const rubyIcon = shallow(
+      const rubyIcon = Enzyme.shallow(
         <Assets.ImageSvgRubyIcon
           className="svg"
         />,
       );
-      const slackIcon = shallow(
+      const slackIcon = Enzyme.shallow(
         <Assets.ImageWebhookSlackIcon
           className="webhook classname"
         />,

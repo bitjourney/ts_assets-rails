@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "strict": true,
@@ -7,8 +8,6 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "noEmitOnError": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "pretty": true
