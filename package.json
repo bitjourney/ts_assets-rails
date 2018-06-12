@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "tslint '__tests__/**/*.{ts,tsx}'"
+    "lint": "tslint --format verbose '__tests__/**/*.{ts,tsx}'"
   },
   "repository": {
     "type": "git",

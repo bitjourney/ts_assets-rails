@@ -7,6 +7,8 @@
     "max-line-length": [
       true,
       160
-    ]
+    ],
+    "no-implicit-dependencies": [true, "dev"],
+    "no-submodule-imports": false
   }
 }
