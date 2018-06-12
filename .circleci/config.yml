@@ -14,7 +14,7 @@ jobs:
       - restore_cache:
           name: "[Node.js] Restore Cache"
           keys:
-            - nodejs-6.10.2
+            - nodejs-8
             - nodejs-
 
       - run:
@@ -22,7 +22,7 @@ jobs:
           command: |
             if [[ ! -e /usr/local/bin/node || $(node --version) != "v${NODEJS_VERSION}" ]]; then
               # https://nodejs.org/ja/download/package-manager/#debian-and-ubuntu-based-linux-distributions-debian-ubuntu-linux
-              curl -sL https://deb.nodesource.com/setup_6.x | bash -
+              curl -sL https://deb.nodesource.com/setup_8.x | bash -
               apt-get update -qq
               apt-get install -y nodejs
               ln -s /usr/local/bin/node /usr/local/bin/nodejs
@@ -30,7 +30,7 @@ jobs:
 
       - save_cache:
           name: "[Node.js] Save Cache"
-          key: nodejs-6.10.2
+          key: nodejs-8
           paths:
             - /usr/local/bin/node
 
