@@ -44,7 +44,7 @@
     "react": "^16",
     "react-dom": "^16",
     "react-test-renderer": "^16",
-    "ts-jest": "^22",
+    "ts-jest": "^23",
     "tslint": "*",
     "typescript": "*"
   },
