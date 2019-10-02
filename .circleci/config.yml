@@ -2,71 +2,49 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ruby:latest
+      - image: circleci/ruby:latest-node
     environment:
       BUNDLE_DIR: vendor/bundle
-
-    working_directory: src
+      CACHE_VERSION: 1 # Increment it if you need to purge the cache
 
     steps:
       - checkout
-
-      - restore_cache:
-          name: "[Node.js] Restore Cache"
-          keys:
-            - nodejs-8
-            - nodejs-
-
-      - run:
-          name: "[Node.js] Install"
-          command: |
-            if [[ ! -e /usr/local/bin/node || $(node --version) != "v${NODEJS_VERSION}" ]]; then
-              # https://nodejs.org/ja/download/package-manager/#debian-and-ubuntu-based-linux-distributions-debian-ubuntu-linux
-              curl -sL https://deb.nodesource.com/setup_8.x | bash -
-              apt-get update -qq
-              apt-get install -y nodejs
-              ln -s /usr/local/bin/node /usr/local/bin/nodejs
-            fi
-
-      - save_cache:
-          name: "[Node.js] Save Cache"
-          key: nodejs-8
-          paths:
-            - /usr/local/bin/node
 
       - run:
           name: Check Runtime Information
           command: |
             cat << EOF
+            ruby           : `ruby -v`
             bundler        : `bundle -v`
             Node.js        : `node -v`
+            npm            : `npm -v`
             EOF
 
       - restore_cache:
           name: "[Ruby] Restore Cache"
           keys:
-            - gems-{{ checksum "ts_assets.gemspec" }}
-            - gems-
+            - gems-{{ .Environment.CACHE_VERSION }}-{{ checksum "ts_assets.gemspec" }}
+            - gems-{{ .Environment.CACHE_VERSION }}-
 
       - run: bundle check --path=$BUNDLE_DIR || bundle install --path=$BUNDLE_DIR --jobs=4 --retry=3 --without=production
 
       - save_cache:
           name: "[Ruby] Save Cache"
-          key: gems-{{ checksum "ts_assets.gemspec" }}
+          key: gems-{{ .Environment.CACHE_VERSION }}-{{ checksum "ts_assets.gemspec" }}
           paths:
             - vendor/bundle/
 
       - restore_cache:
           name: "[JavaScript] Restore Cache"
           keys:
-            - js-packages-{{ checksum "package-lock.json" }}
-            - js-packages-
+            - js-packages-{{ .Environment.CACHE_VERSION }}-{{ checksum "package-lock.json" }}
+            - js-packages-{{ .Environment.CACHE_VERSION }}-
 
       - run: npm install
 
       - save_cache:
           name: "[JavaScript] Save Cache"
-          key: js-packages-{{ checksum "package-lock.json" }}
+          key: js-packages-{{ .Environment.CACHE_VERSION }}-{{ checksum "package-lock.json" }}
           paths:
             - node_modules/
 
