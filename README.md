@@ -1,9 +1,9 @@
 # TsAssets for Rails [![Gem Version](https://badge.fury.io/rb/ts_assets.svg)](https://badge.fury.io/rb/ts_assets) [![CircleCI](https://circleci.com/gh/bitjourney/ts_assets-rails.svg?style=svg)](https://circleci.com/gh/bitjourney/ts_assets-rails)
 
-`TsAssets` is a code genertor to export Rails asset images to TypeScript as React components.
+`TsAssets` is a code generator to export Rails asset images to TypeScript as React components.
 
 The motivation is that Rails asset images have hash digests in their URLs,
-e.g. `/assets/kibela_logo-f3e74a6f5c9f46cc4e8b920cb.svg`, which are not easily available from JavaScript. The gem allows it by generationg TypeScript code.
+e.g. `/assets/kibela_logo-f3e74a6f5c9f46cc4e8b920cb.svg`, which are not easily available from JavaScript. The gem allows it by generating TypeScript code.
 
 ## Usage
 
